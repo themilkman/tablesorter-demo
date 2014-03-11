@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+# Add Tablesorter
+gem 'jquery-tablesorter'
+# Avoid issues with turbolinks and jquery
+gem 'jquery-turbolinks'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0.rc1'
