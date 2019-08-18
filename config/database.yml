@@ -1,4 +1,4 @@
-# SQLite version 3.x
+# SQLite. Versions 3.8.0 and up are supported.
 #   gem install sqlite3
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
@@ -6,7 +6,7 @@
 #
 default: &default
   adapter: sqlite3
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
@@ -20,11 +20,6 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-# Do not keep production credentials in the repository,
-# instead read the configuration from the environment.
-#
-# Example:
-#   sqlite3://myuser:mypass@localhost/full/path/to/somedatabase
-#
 production:
-  url: <%= ENV["DATABASE_URL"] %>
+  <<: *default
+  database: db/production.sqlite3
